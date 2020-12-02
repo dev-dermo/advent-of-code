@@ -20,7 +20,7 @@ function getSumEq2020(inputArr) {
 				let secondNum = inputArr[k];
 
 				for (let j=0;j<inputArr.length;j++) {
-					if (j === k) {
+					if (j === k || j === i) {
 						continue;
 					} else {
 						let thirdNum = inputArr[j];
