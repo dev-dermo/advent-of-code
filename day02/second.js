@@ -1026,5 +1026,4 @@ function getValidPws(arr) {
 };
 
 const inputObject = inputToObject(input);
-const validPws = getValidPws(inputObject);
-console.log(validPws.length);
+console.log(getValidPws(inputObject).length);
