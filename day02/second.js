@@ -1006,28 +1006,23 @@ function inputToObject(arr) {
 		let minMax = parts[0].split('-');
 
 		return {
-			min: parseInt(minMax[0]),
-			max: parseInt(minMax[1]),
+			// indexes adjusted for no 0 index
+			firstIndex: parseInt(minMax[0]) - 1,
+			secondIndex: parseInt(minMax[1]) - 1,
 			letter: parts[1][0],
 			pw: parts[2]
 		};
 	});
 }
 
-function countLetters(str, l) {
-	let count = 0;
-
-	for (let i=0;i<str.length;i++) {
-		if (str[i] === l) {
-			count++;
-		}
-	}
-
-	return count;
-};
-
 function getValidPws(arr) {
-	return arr.filter(obj => (countLetters(obj.pw, obj.letter) >= obj.min) && (countLetters(obj.pw, obj.letter) <= obj.max));
+	return arr.filter(obj => {
+		if ((obj.pw[obj.firstIndex] === obj.letter) && (obj.pw[obj.secondIndex] === obj.letter)) {
+			return false;
+		} else if ((obj.pw[obj.firstIndex] === obj.letter) || (obj.pw[obj.secondIndex] === obj.letter)) {
+			return true;
+		}
+	});
 };
 
 const inputObject = inputToObject(input);
