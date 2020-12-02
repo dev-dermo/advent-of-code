@@ -6,7 +6,7 @@ const input = [1742, 1763,	1238,	1424,	1736,	1903,	1580,	1847,	1860,	1933,	1779,
 
 function getSumEq2020(inputArr) {
 	console.log(`There are ${inputArr.length} items in this 'expense report'.`);
-	console.log(`With O(n^3) complexity, worst case, this will take ${inputArr.length * inputArr.length * inputArr.length} iterations.`);
+	console.log(`With O(n^3) complexity, worst case, this will take ${(inputArr.length * inputArr.length * inputArr.length).toString().split('000').join(',000')} iterations.`);
 
 	for (let i=0;i<inputArr.length;i++) {
 		let firstNum = inputArr[i];
@@ -24,7 +24,7 @@ function getSumEq2020(inputArr) {
 						let thirdNum = inputArr[j];
 
 						if ((firstNum + secondNum + thirdNum) === 2020) {
-							console.log(`Hurrah, you found them!`);
+							console.log(`Hurrah, you found them!: ${[firstNum, secondNum, thirdNum]}`);
 							return firstNum * secondNum * thirdNum;
 						}
 					}
