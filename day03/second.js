@@ -17,19 +17,23 @@ const input = require('./input');
 
 const landscape = input.map(xAxis => xAxis.split(''));
 const xRepeatOn = landscape[0].length;
+const finalResult = [];
+const vectors = [ [1, 1], [3, 1], [5, 1], [7, 1], [1, 2] ];
 
-function countTrees(lndscp, xMove) {
+function countTrees(lndscp, xMove, yMove) {
 	let treeCount = 0, x = 0;
 
-	lndscp.forEach(xAxis => {
-		// console.log(`coords: ${x}, ${y}`);
-		if (xAxis[x] === '#') treeCount++;
+	for (var y=0;y<lndscp.length;y+=yMove) {
+			// console.log(`coords: ${x}, ${y}`);
+			if (lndscp[y][x] === '#') treeCount++;
+			
+			x+=xMove;
+			if (x >= xRepeatOn) x%=xRepeatOn;
+	}
 
-		x+=xMove;
-		if (x >= xRepeatOn) x%=xRepeatOn;
-	});
-
-	return treeCount;
+	finalResult.push(treeCount);
 }
 
-console.log(countTrees(landscape, 3));
+vectors.forEach(cords => countTrees(landscape, ...cords));
+
+console.log(finalResult.reduce((curr, acc) => curr * acc));
