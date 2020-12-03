@@ -35,4 +35,4 @@ function countTrees(lndscp, xMove, yMove) {
 
 vectors.forEach(vector => countTrees(landscape, ...vector));
 
-console.log(finalResult.reduce((curr, acc) => curr * acc));
+console.log(finalResult.reduce((acc, curr) => acc * curr));
