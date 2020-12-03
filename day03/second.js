@@ -17,8 +17,7 @@ const input = require('./input');
 
 const landscape = input.map(xAxis => xAxis.split(''));
 const xRepeatOn = landscape[0].length;
-const finalResult = [];
-const vectors = [ [1, 1], [3, 1], [5, 1], [7, 1], [1, 2] ];
+const finalResult = [], vectors = [ [1, 1], [3, 1], [5, 1], [7, 1], [1, 2] ];
 
 function countTrees(lndscp, xMove, yMove) {
 	let treeCount = 0, x = 0;
