@@ -33,6 +33,6 @@ function countTrees(lndscp, xMove, yMove) {
 	finalResult.push(treeCount);
 }
 
-vectors.forEach(coords => countTrees(landscape, ...coords));
+vectors.forEach(vector => countTrees(landscape, ...vector));
 
 console.log(finalResult.reduce((curr, acc) => curr * acc));
