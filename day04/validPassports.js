@@ -7,9 +7,7 @@ module.exports = [
 		eyr: "2030",
 		byr: "1980",
 		hcl: "#623a2f"
-	},
-
-	{
+	}, {
 		eyr: "2029",
 		ecl: "blu",
 		cid: "129",
@@ -18,9 +16,7 @@ module.exports = [
 		pid: "896056539",
 		hcl: "#a97842",
 		hgt: "165cm",
-	},
-
-	{
+	}, {
 		hcl: "#888785",
 		hgt: "164cm",
 		byr: "2001",
@@ -29,9 +25,7 @@ module.exports = [
 		pid: "545766238",
 		ecl: "hzl",
 		eyr: "2022",
-	},
-
-	{
+	}, {
 		iyr: "2010",
 		hgt: "158cm",
 		hcl: "#b6652a",
