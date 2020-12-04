@@ -10,7 +10,7 @@ input.forEach(passport => {
 		if (fields.includes(field)) fieldCount++;
 	}
 
-	if (fieldCount === 8 || ((fieldCount === 7) && (!passport['cid']))) validPassports.push(fieldCount);
+	if (fieldCount === 8 || ((fieldCount === 7) && (!passport.cid))) validPassports.push(fieldCount);
 });
 
 console.log(validPassports.length);
