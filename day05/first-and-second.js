@@ -1,9 +1,6 @@
+const { sort } = require('./input');
 const input = require('./input');
-// const input = [
-// 	"BFFFBBFRRR", //: row 70, column 7, seat ID 567.
-// 	"FFFBBBFRRR", //: row 14, column 7, seat ID 119.
-// 	// "BBFFBBFRLL",
-// ];
+// const input = ["BFFFBBFRRR"] //: row 70, column 7, seat ID 567.
 
 const seatIds = [];
 
@@ -27,13 +24,16 @@ input.forEach(boardingPass => {
 			case 'R':
 				colArr.splice(0, Math.ceil(colArr.length / 2));
 				break;
+			default:
+				return 'Invalid passport info';
 		}
-
-		console.log(rowArr, colArr);
 	}
-	console.log(rowArr, colArr);
 	seatIds.push((rowArr[0] * 8) + colArr[0]);
 });
 
+const sortedSeats = seatIds.sort((a, b) => b - a);
 
-console.log(seatIds.sort((a, b) => b - a)[0]);
+console.log(`Highest seat id: ${sortedSeats[0]}`);
+
+// second part
+console.log(`My seat id: ${sortedSeats.filter((id, index) => id - 1 !== sortedSeats[index + 1])[0] - 1}`);
