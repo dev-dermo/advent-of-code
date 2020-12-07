@@ -1,4 +1,3 @@
-const { sort } = require('./input');
 const input = require('./input');
 // const input = ["BFFFBBFRRR"] //: row 70, column 7, seat ID 567.
 
