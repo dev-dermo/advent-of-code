@@ -1,6 +1,5 @@
 const input = require('./input');
-const toVisit = [],
-			visited = [];
+const validAns = [];
 
 const inputObjs = input.map(line => {
 	const components = line.split(', ');
@@ -25,10 +24,10 @@ const inputObjs = input.map(line => {
 			}
 		};
 
-		for (let i=1;i<components.length;i++) {
+		for (let i = 1; i < components.length; i++) {
 			tmpObj[components[0].split(' ').slice(0, 2).join('_')][components[i].split(' ').slice(1, 3).join('_')] = components[i].split(' ')[0]
 		}
-		
+
 		return tmpObj;
 	}
 });
@@ -36,5 +35,45 @@ const inputObjs = input.map(line => {
 console.log(inputObjs);
 
 inputObjs.forEach(bag => {
-	
+	for (parentBag in bag) {
+		for (childBag in bag[parentBag]) {
+			if (childBag === 'shiny_gold') validAns.push(parentBag);
+		}
+	}
 });
+
+validAns.forEach(validAnswer => {
+	inputObjs.forEach(bag => {
+		for (parentBag in bag) {
+			for (childBag in bag[parentBag]) {
+				if (childBag === validAnswer) {
+					if (!validAns.includes(parentBag)) {
+						validAns.push(parentBag);
+					};
+				}
+			}
+		}
+	})
+});
+
+let count;
+do {
+	count = 0;
+	validAns.forEach(validAnswer => {
+		inputObjs.forEach(bag => {
+			for (parentBag in bag) {
+				for (childBag in bag[parentBag]) {
+					if (childBag === validAnswer) {
+						if (!validAns.includes(parentBag)) {
+							validAns.push(parentBag)
+							count++;
+						};
+					}
+				}
+			}
+		})
+	});
+} while (count > 0);
+
+console.log(validAns);
+console.log(validAns.length);
