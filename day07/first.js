@@ -1,7 +1,8 @@
 const input = require('./input');
+const toVisit = [],
+			visited = [];
 
-const inputObj = input.map(line => {
-	// console.log(line.split(', ').length);
+const inputObjs = input.map(line => {
 	const components = line.split(', ');
 
 	if (components.length === 1) {
@@ -18,14 +19,22 @@ const inputObj = input.map(line => {
 			};
 		}
 	} else {
-		console.log(components, 'object with 2 props');
-		return {
+		const tmpObj = {
 			[components[0].split(' ').slice(0, 2).join('_')]: {
-				[components[0].split(' ').slice(5, 7).join('_')]: components[0].split(' ')[4],
-				[components[1].split(' ').slice(1, 3).join('_')]: components[1].split(' ')[0],
+				[components[0].split(' ').slice(5, 7).join('_')]: components[0].split(' ')[4]
 			}
 		};
+
+		for (let i=1;i<components.length;i++) {
+			tmpObj[components[0].split(' ').slice(0, 2).join('_')][components[i].split(' ').slice(1, 3).join('_')] = components[i].split(' ')[0]
+		}
+		
+		return tmpObj;
 	}
 });
 
-console.log(inputObj);
+console.log(inputObjs);
+
+inputObjs.forEach(bag => {
+	
+});
